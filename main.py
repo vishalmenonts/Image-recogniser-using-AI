@@ -24,7 +24,7 @@ def classify_image(model, image):
     try:
         processed_image = preprocess_image(image)
         predictions = model.predict(processed_image)
-        decoded_predictions = decode_predictions(predictions, top=3)[0]
+        decoded_predictions = decode_predictions(predictions, top=5)[0]
         
         return decoded_predictions
     except Exception as e:
@@ -32,9 +32,9 @@ def classify_image(model, image):
         return None
     
 def main():
-    st.set_page_config(page_title="AI Image Classifier", page_icon="🖼️", layout="centered")
+    st.set_page_config(page_title="Image Recogniser using AI", page_icon="🖼️", layout="centered")
     
-    st.title("AI Image Classifier")
+    st.title("Image Recogniser using AI")
     st.write("Upload an image and let AI tell you what is in it!")
     
     @st.cache_resource
@@ -43,7 +43,7 @@ def main():
     
     model = load_cached_model()
     
-    uploaded_file = st.file_uploader("Choose an image...", type=["jpg", "png"])
+    uploaded_file = st.file_uploader("Choose an image...", type=["jpg", "png","jpeg"])
     
     if uploaded_file is not None:
         image = st.image(
