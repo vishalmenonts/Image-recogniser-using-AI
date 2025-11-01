@@ -1,1 +1,1 @@
-# Image-recogniser-using-AI
+# Image-recognizer-using-AI
